@@ -10,3 +10,7 @@ held means (temporary purpose) = user selected and it can hold up to 5 minutes i
 
 booked means = the seat is booked no other user can book that seat 
 
+Limitations:-
+
+No user authentication , payment processing and Single show per booking request
+
