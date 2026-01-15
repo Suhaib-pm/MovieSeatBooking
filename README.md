@@ -12,5 +12,5 @@ booked means = the seat is booked no other user can book that seat
 
 Limitations:-
 
-No user authentication , payment processing and Single show per booking request
+No user authentication , no payment processing and Single show per booking request
 
