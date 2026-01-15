@@ -30,9 +30,7 @@ namespace MovieSeatBooking.Controllers
         [HttpPost("hold")]
         public IActionResult HoldSeats(int showId, List<int> seatIds)
         {
-            var seats = _context.Seats
-                .Where(s => seatIds.Contains(s.Id) && s.ShowId == showId)
-                .ToList();
+            var seats = _context.Seats.Where(s => seatIds.Contains(s.Id) && s.ShowId == showId).ToList();
 
             if (seats.Any(s => s.Status != SeatStatus.Available))
                 return BadRequest("Seat already taken");
@@ -51,9 +49,7 @@ namespace MovieSeatBooking.Controllers
         [HttpPost("book")]
         public IActionResult BookSeats(int showId)
         {
-            var seats = _context.Seats
-                .Where(s => s.ShowId == showId && s.Status == SeatStatus.Held)
-                .ToList();
+            var seats = _context.Seats.Where(s => s.ShowId == showId && s.Status == SeatStatus.Held).ToList();
 
             foreach (var seat in seats)
             {
@@ -69,9 +65,7 @@ namespace MovieSeatBooking.Controllers
         [HttpPost("release")]
         public IActionResult ReleaseSeats()
         {
-            var expiredSeats = _context.Seats
-                .Where(s => s.Status == SeatStatus.Held && s.HoldTill < DateTime.Now)
-                .ToList();
+            var expiredSeats = _context.Seats.Where(s => s.Status == SeatStatus.Held && s.HoldTill < DateTime.Now).ToList();
 
             foreach (var seat in expiredSeats)
             {
